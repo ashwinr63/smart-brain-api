@@ -15,7 +15,7 @@ const db = knex({
   // connect to your own database here:
   client: 'pg',
   connection: {
-    host : process.env.DATABASE_URL,
+    connectionString : process.env.DATABASE_URL,
     ssl: true,
   }
 });
@@ -25,7 +25,7 @@ const app = express();
 app.use(cors())
 app.use(express.json()); // latest version of exressJS now comes with Body-Parser!
 
-app.get('/', (req, res)=> { res.send(db.users) })
+app.get('/', (req, res)=> { res.send(database.users) })
 app.post('/signin', signin.handleSignin(db, bcrypt))
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})
