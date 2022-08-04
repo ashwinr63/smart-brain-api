@@ -34,7 +34,7 @@ app.get('/', (req, res)=> {
 
 app.post('/signIn', (req, res) => {
     if(req.body.email === database.users[0].email && req.body.password === database.users[0].password) {
-        res.json('Sucess')
+        res.json(database.users[0])
     } else {
         res.json('Error Loggin In')
     }
@@ -88,11 +88,3 @@ app.listen(3000, () => {
 })
 
 
-/* 
-
-/ -> res = 'This is Working'
-/signIn -> res = 'Sign In Page'
-/register -> res = 'Register Page'
-/profile/:userId -> res = 'User Profile Page'
-
-*/
