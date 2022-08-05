@@ -16,14 +16,12 @@ const db = knex({
     client: 'pg',
     connection: {
         connectionString: process.env.DATABASE_URL,
-    ssl: {
-    rejectUnauthorized: false
+    ssl: true,
   }
-    }
-  });
+    });
 
 const app = express();
-
+app.use(bodyParser.json())
 app.use(cors())
 app.use(express.json()); // latest version of exressJS now comes with Body-Parser!
 
